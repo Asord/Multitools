@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block scripts %}
+{{ super() }}
+    <script>
+        $(document).ready(function() {
+            let ugly = document.getElementById('myTextArea').value;
+            let obj = JSON.parse(ugly);
+            let pretty = JSON.stringify(obj, undefined, 4);
+            document.getElementById('myTextArea').value = pretty;
+        });
+    </script>
+{% endblock %}
+
+{% block title %}Ambibox Effects{% endblock %}
+
+{% block content %}
+
+
+    <div class="col-md-12">
+        <h1>effect_red_cyan.json</h1>
+        <textarea id="myTextArea" cols=70 rows=30>
+        {
+          "settings": {
+            "BandsCount": 17,
+            "AutoLevel": true,
+            "Fading": 5,
+            "Tempo": 1000
+          },
+          "palette": {
+            "orange"   : "#FF1D00",
+            "purple"   : "#800080",
+            "turquoise": "#00ff80",
+          },
+          "effects": {
+            "numberOfLeds": 16,
+            "leds": [{
+                "type": "Colors",
+                "colors": ["purple", "blue", "cyan", "turquoise", "turquoise"],
+                "length": 8,
+                "spectrum": {
+                    "type"  : "automatic",
+                    "values": {"start": 16, "stop": 8, "step": -1}
+                }
+            },{
+                "type": "Colors",
+                "colors": ["purple", "red", "orange", "yellow", "yellow"],
+                "length": 8,
+                "spectrum": {
+                    "type"  : "automatic",
+                    "values": {"start": 8, "stop": 16, "step": 1}
+                }
+            }]
+          }
+        }
+        </textarea>
+    </div>
+    <div class="col-md-12">
+        <h1>effect.json</h1>
+        <textarea id="myTextArea" cols=70 rows=30>
+        {
+          "settings": {
+            "BandsCount": 17,
+            "AutoLevel": true,
+            "Fading": 5,
+            "Tempo": 1000
+          },
+          "palette": {},
+          "effects": {
+            "numberOfLeds": 16,
+            "leds": [{
+                "type"     : "Curve",
+                "red"      : 200,
+                "green"    : 80,
+                "blue"     :  20,
+                "clockwise": true,
+                "length"   : 16,
+                "spectrum" : {
+                  "type"  : "automatic",
+                  "values": {"start": 1, "stop": 16, "step": 1}
+                }
+            }]
+          }
+        }
+        </textarea>
+    </div>
+
+
+{% endblock %}

@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block title %}Ambibox{% endblock %}
+{% block style %}"{{ url_for('static', filename='Ambibox/style.css') }}"{% endblock %}
+
+{% block content %}
+    <ul class="nav nav-tabs" id="ambibox-tabs">
+        <li class="nav-item">
+            <a class="nav-link active" href="#settings">Settings</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#palette">Palette</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#effects">Effects</a>
+        </li>
+    </ul>
+
+    <button id="send">Send</button>
+
+    <div id="ambibox-form" class="container-fluid">
+        <div class="tab-content">
+
+            <!-- SETTINGS -->
+            <div role="tabpanel" class="tab-pane active" id="settings">
+                <div class="form-group">
+                    <label for="bands-count">Number of spectrum bands</label>
+                    <input type="number" class="form-control" id="bands-count" value=17>
+                </div>
+
+                <div class="form-group">
+                    <label for="fading">Fading speed</label>
+                    <input type="number" class="form-control" id="fading" value=5>
+                </div>
+
+                <div class="form-group">
+                    <label for="tempo">Tempo speed</label>
+                    <input type="number" class="form-control" id="tempo" value=1000>
+                </div>
+
+                <div class="form-group">
+                    <label for="nb-leds">Number of leds</label>
+                    <input type="number" class="form-control" id="nb-leds" value=16>
+                </div>
+
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="auto-level" checked>
+                    <label class="form-check-label" for="auto-level">Enable auto Level</label>
+                </div>
+
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="save" checked>
+                    <label class="form-check-label" for="save">Save effect</label>
+                </div>
+            </div>
+
+            <!-- PALETTE -->
+            <div role="tabpanel" class="tab-pane" id="palette">
+                <button id="ambibox-palette-button">+</button>
+            </div>
+
+            <!-- EFFECTS -->
+            <div role="tabpanel" class="tab-pane" id="effects">
+                <ul class="nav nav-tabs" id="effects-tabs"></ul>
+
+                <button id="ambibox-effect-button">+</button>
+                <div class="container-fluid">
+                    <div class="tab-content" id="ambibox-leds-effect">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% if saves %}
+        {% for save in saves %}
+        <a class="save-link" id="save-{{ save.id }}" href="{{ url_for("ambibox_effects") }}"> Save N°{{ save.id }} </a>
+        {% endfor %}
+    {% endif %}
+
+{% endblock %}
+{% block script %}"{{ url_for('static', filename='Ambibox/script.js') }}"{% endblock %}

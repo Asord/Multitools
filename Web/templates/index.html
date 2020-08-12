@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+    {% if views %}
+        {% for view in views %}
+            {% if view.name != "index" %}
+            <a href="{{ url_for(view.url) }}">
+                {% if view.image != "" %}
+                <img src="{{ url_for("static", filename=view.image) }}"
+                     alt="{{ view.name }}"
+                     title="{{ view.desc }}">
+                {% endif %}
+            </a>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endblock %}

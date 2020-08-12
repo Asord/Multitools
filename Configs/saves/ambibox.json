@@ -1,0 +1,61 @@
+[
+  {
+    "id": 0,
+    "save": {
+      "settings": {
+        "BandsCount": 17,
+        "Fading": 5,
+        "Tempo": 1000,
+        "AutoLevel": true
+      },
+      "palette": {
+        "orange": "#FF1D00",
+        "purple": "#800080",
+        "turquoise": "#00ff80"
+      },
+      "effects": {
+        "numberOfLeds": 16,
+        "leds": [
+          {
+            "type": "Colors",
+            "colors": [
+              "purple",
+              "blue",
+              "cyan",
+              "turquoise",
+              "turquoise"
+            ],
+            "length": 8,
+            "spectrum": {
+              "type": "automatic",
+              "values": {
+                "start": 16,
+                "stop": 8,
+                "step": -1
+              }
+            }
+          },
+          {
+            "type": "Colors",
+            "colors": [
+              "purple",
+              "red",
+              "orange",
+              "yellow",
+              "yellow"
+            ],
+            "length": 8,
+            "spectrum": {
+              "type": "automatic",
+              "values": {
+                "start": 8,
+                "stop": 16,
+                "step": 1
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+]
